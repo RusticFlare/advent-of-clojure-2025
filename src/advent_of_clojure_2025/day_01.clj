@@ -12,12 +12,12 @@
 (defrecord Left [amount]
   Instruction
   (nextPosition [_ position] (mod (- position amount) 100))
-  (nextRange [_ previousRange] (take amount (iterate dec (- (last previousRange) 1)))))
+  (nextRange [_ previousRange] (take amount (iterate dec (dec (last previousRange))))))
 
 (defrecord Right [amount]
   Instruction
   (nextPosition [_ position] (mod (+ position amount) 100))
-  (nextRange [_ previousRange] (take amount (iterate inc (+ (last previousRange) 1)))))
+  (nextRange [_ previousRange] (take amount (iterate inc (inc (last previousRange))))))
 
 (defn to-instruction
   [input]
