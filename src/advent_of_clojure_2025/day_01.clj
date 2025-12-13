@@ -6,17 +6,17 @@
     (apply f (reverse args))))
 
 (defprotocol Instruction
-  (nextPosition [x position])
-  (nextRange [x previousRange]))
+  (nextPosition [instruction previousPosition])
+  (nextRange [instruction previousRange]))
 
 (defrecord Left [amount]
   Instruction
-  (nextPosition [_ position] (mod (- position amount) 100))
+  (nextPosition [_ previousPosition] (mod (- previousPosition amount) 100))
   (nextRange [_ previousRange] (take amount (iterate dec (dec (last previousRange))))))
 
 (defrecord Right [amount]
   Instruction
-  (nextPosition [_ position] (mod (+ position amount) 100))
+  (nextPosition [_ previousPosition] (mod (+ previousPosition amount) 100))
   (nextRange [_ previousRange] (take amount (iterate inc (inc (last previousRange))))))
 
 (defn to-instruction
