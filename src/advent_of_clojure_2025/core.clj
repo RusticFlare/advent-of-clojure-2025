@@ -1,6 +1,7 @@
 (ns advent-of-clojure-2025.core
   (:require [clojure.java.io :refer [resource]]
-            [advent-of-clojure-2025.day-01]))
+            [advent-of-clojure-2025.day-01]
+            [advent-of-clojure-2025.day-02]))
 
 (defn read-input
   [day]
@@ -14,4 +15,6 @@
   (case part
     "d01.p1" (println (advent-of-clojure-2025.day-01/part-1 (read-input "day-01.txt")))
     "d01.p2" (println (advent-of-clojure-2025.day-01/part-2 (read-input "day-01.txt")))
+    "d02.p1" (println (advent-of-clojure-2025.day-02/part-1 (read-input "day-02.txt")))
+    "d02.p2" (println (advent-of-clojure-2025.day-02/part-2 (read-input "day-02.txt")))
     (println "not found")))

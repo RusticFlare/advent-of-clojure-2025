@@ -25,9 +25,7 @@
     \L (->Left (Integer/parseInt (subs input 1)))
     \R (->Right (Integer/parseInt (subs input 1)))))
 
-(defn part-1
-  "Day 01 Part 1"
-  [input]
+(defn part-1 [input]
   (->>
    (str/split-lines input)
    (map to-instruction)
@@ -35,9 +33,7 @@
    (filter zero?)
    (count)))
 
-(defn part-2
-  "Day 01 Part 2"
-  [input]
+(defn part-2 [input]
   (->>
    (str/split-lines input)
    (map to-instruction)
