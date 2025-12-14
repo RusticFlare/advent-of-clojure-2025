@@ -1,11 +1,14 @@
 (ns advent-of-clojure-2025.day-02
   (:require [clojure.string :as str]))
 
+(defn inclusive-range [[start end]]
+  (range start (inc end)))
+
 (defn to-range [input]
   (let [values (->>
                 (str/split input #"-")
                 (map ^[String] Long/parseLong))]
-    (range (nth values 0) (inc (nth values 1)))))
+    (inclusive-range values)))
 
 (defn duplicateSequence? [id]
   (re-matches #"^(.+)\1$" (Long/toString id)))
