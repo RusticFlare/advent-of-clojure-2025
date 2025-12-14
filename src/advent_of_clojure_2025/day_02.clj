@@ -7,19 +7,24 @@
                 (map ^[String] Long/parseLong))]
     (range (nth values 0) (inc (nth values 1)))))
 
-(defn invalid? [id]
-  (let [id-text (Long/toString id)
-        id-text-len (count id-text)
-        half-id-text-len (/ id-text-len 2)]
-    (and (even? id-text-len) (= (take half-id-text-len id-text) (take-last half-id-text-len id-text)))))
+(defn duplicateSequence? [id]
+  (re-matches #"^(.+)\1$" (Long/toString id)))
+
+(defn repeatingSequence? [id]
+  (re-matches #"^(.+)\1+$" (Long/toString id)))
 
 (defn part-1 [input]
   (->>
    (str/split input #",")
    (map to-range)
    (flatten)
-   (filter invalid?)
+   (filter duplicateSequence?)
    (reduce +)))
 
 (defn part-2 [input]
-  input)
+  (->>
+   (str/split input #",")
+   (map to-range)
+   (flatten)
+   (filter repeatingSequence?)
+   (reduce +)))
