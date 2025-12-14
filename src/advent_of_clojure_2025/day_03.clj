@@ -10,8 +10,8 @@
         (drop start)
         (take (- end start)))))
 
-(defn max-by [fn coll]
-  (reduce #(if (> (fn %2) (fn %1)) %2 %1) coll))
+(defn max-by [f coll]
+  (reduce #(if (> (f %2) (f %1)) %2 %1) coll))
 
 (defn joltage [input]
   (let [batteries (->>
@@ -26,7 +26,7 @@
         second (->>
                 (subsequence batteries (inc first-index))
                 (apply max))]
-    (Integer/parseInt (str first second))))
+    (+ (* first 10) second)))
 
 (defn part-1 [input]
   (->>
