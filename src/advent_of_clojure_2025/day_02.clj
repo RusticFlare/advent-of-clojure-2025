@@ -11,10 +11,10 @@
     (inclusive-range values)))
 
 (defn duplicateSequence? [id]
-  (re-matches #"^(.+)\1$" (Long/toString id)))
+  (re-matches #"(.+)\1" (Long/toString id)))
 
 (defn repeatingSequence? [id]
-  (re-matches #"^(.+)\1+$" (Long/toString id)))
+  (re-matches #"(.+)\1+" (Long/toString id)))
 
 (defn part-1 [input]
   (->>
