@@ -1,9 +1,10 @@
 (ns advent-of-clojure-2025.core
-  (:require [advent-of-clojure-2025.day-01]))
+  (:require [clojure.java.io :refer [resource]]
+            [advent-of-clojure-2025.day-01]))
 
 (defn read-input
   [day]
-  (slurp (clojure.java.io/resource day)))
+  (slurp (resource day)))
 
 (defn -main
   "Used to dispatch tasks from the command line.

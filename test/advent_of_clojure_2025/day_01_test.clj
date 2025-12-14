@@ -1,5 +1,5 @@
 (ns advent-of-clojure-2025.day-01-test
-  (:require [clojure.test :refer [deftest testing is]]
+  (:require [clojure.test :refer [deftest is]]
             [advent-of-clojure-2025.day-01 :refer [part-1 part-2]]
             [clojure.java.io :refer [resource]]))
 
