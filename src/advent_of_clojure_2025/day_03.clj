@@ -10,6 +10,9 @@
         (drop start)
         (take (- end start)))))
 
+(defn max-by [fn coll]
+  (reduce #(if (> (fn %2) (fn %1)) %2 %1) coll))
+
 (defn joltage [input]
   (let [batteries (->>
                    input
@@ -17,11 +20,11 @@
         indexed-batteries (->>
                            batteries
                            (map-indexed vector))
-        [index first] (->>
-                       (subsequence indexed-batteries 0 (dec (count indexed-batteries)))
-                       (reduce #(if (> (second %2) (second %1)) %2 %1)))
+        [first-index first] (->>
+                             (subsequence indexed-batteries 0 (dec (count indexed-batteries)))
+                             (max-by second))
         second (->>
-                (subsequence batteries (inc index))
+                (subsequence batteries (inc first-index))
                 (apply max))]
     (Integer/parseInt (str first second))))
 
