@@ -22,8 +22,8 @@
 (defn to-instruction
   [input]
   (case (get input 0)
-    \L (Left. (Integer/parseInt (subs input 1)))
-    \R (Right. (Integer/parseInt (subs input 1)))))
+    \L (->Left (Integer/parseInt (subs input 1)))
+    \R (->Right (Integer/parseInt (subs input 1)))))
 
 (defn part-1
   "Day 01 Part 1"
